@@ -1,0 +1,19 @@
+function setOwner() {
+  var file;
+  var name;
+  var user = Session.getActiveUser().getEmail();
+  var folder = DriveApp.getFolderById('0B-Z7OUgXBAAbc2ZlSjJ4ZmZuUFE');
+  var contents = folder.getFiles();
+  var ss = SpreadsheetApp.openById('1l2N3gC1kOPmodcbw_dOwMWfxFpzIV6urV4shbNYQWY0');
+  var sheet = ss.setActiveSheet(ss.getSheetByName('All Videos'));
+  
+  Logger.log(Session.getActiveUser().getEmail());
+  
+while(contents.hasNext()) {
+    file = contents.next();
+    file.setOwner(user);
+}
+
+};
+  
+  
