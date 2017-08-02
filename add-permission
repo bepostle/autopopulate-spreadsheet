@@ -1,0 +1,40 @@
+function addPermission() {
+    
+  var currentfile;
+  var access;
+  var name;
+  var link;
+  var description;
+  var parsed;
+  var folder = DriveApp.getFolderById('0B-Z7OUgXBAAbc2ZlSjJ4ZmZuUFE');
+  var contents = folder.getFiles();
+  var ss = SpreadsheetApp.openById('1l2N3gC1kOPmodcbw_dOwMWfxFpzIV6urV4shbNYQWY0');
+  var sheet = ss.setActiveSheet(ss.getSheetByName('All Videos'));
+  //var range = sheet.getRange("A5:H5");
+  //sheet.setActiveRange(range);
+ 
+
+  while(contents.hasNext()) {
+   currentfile = contents.next();
+   access = file.getAccess('brent.postlethweight@successacademies.org');
+    Logger.log(access);}}
+   if (access = 'EDIT' || 'OWNER') {
+      //file.addEditor('bryankey123@gmail.com');
+    } else {
+    Logger.log(file.getName());
+  }
+    
+    /*
+    name = file.getName();
+    link = file.getUrl();
+    description = file.getDescription();
+    if (file.addEditor) {
+      parsed = description.split("|");
+      sheet.appendRow( [name, link, parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5]] );
+    } else {
+    Logger.log( [name, link, parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5]] );
+  }
+*/  
+  
+
+   
