@@ -1,0 +1,16 @@
+// need to finish this. it's for using a separate sheet called Tagging Intake to set the descriptions. added the spreadsheet and the sheetname on 6/6
+function setDescription() {
+  var ss = SpreadsheetApp.openById('1l2N3gC1kOPmodcbw_dOwMWfxFpzIV6urV4shbNYQWY0');
+  var sheet = SpreadsheetApp.setActiveSheet(ss.getSheetByName('Tagging Intake'));
+  var videoIds = sheet.getRange('B:B').getValues();
+  var description = sheet.getRange('D:D').getValues();
+  //var description = sheet.getRange('F:K').getValues();
+  var thisFile;
+  
+Logger.log(description);
+  
+for (var i = 1; i < videoIds.length; i++) {
+    thisFile = DriveApp.getFileById(videoIds[i]);
+    thisFile.setDescription(description[i]);
+    }
+}
