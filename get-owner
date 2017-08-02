@@ -1,0 +1,66 @@
+function getOwner() {
+    
+  
+  //var description;
+  //var parsed;
+  var folder = DriveApp.getFolderById('0B-Z7OUgXBAAbc2ZlSjJ4ZmZuUFE');
+  var contents = folder.getFiles();
+  var ss = SpreadsheetApp.openById('1l2N3gC1kOPmodcbw_dOwMWfxFpzIV6urV4shbNYQWY0');
+  var sheet = ss.setActiveSheet(ss.getSheetByName('Copy of All Videos'));
+  var namerange = sheet.getRange("A6:A521");
+  var name = namerange.getValues();
+  var links = sheet.getRange("B6:B521");
+  var idrange = sheet.getRange("C6:C521");
+  var id = idrange.getValues();
+  var owners = sheet.getRange("D6:D521");
+  var owner;
+
+
+  //var range = sheet.getRange("A5:H5");
+  //sheet.setActiveRange(range);
+  
+  
+  //THIS FORMATS THE SHEET WITH THE APPROPRIATE ROW HEADERS
+  /*
+  sheet.clearContents();
+  sheet.appendRow([" "]);
+  sheet.appendRow([" ", "Schooling Video Roster"]);
+  sheet.appendRow([" ", "All Videos"]);
+  sheet.appendRow([" "]);
+  sheet.appendRow(['Name', 'Link', 'Owner', 'Content Area', 'Topic', 'School Division', 'Grade(s)', 'Teacher/Presenter', 'Year'] );
+  */
+  
+  var i = 0;
+  for (i = 0; i < 5; i++) {
+    //owner = file.getOwner();
+    var id = id[i];
+    var file = DriveApp.getFileById(id);
+    Logger.log(id[i]);
+  }
+  
+  var sh = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var row = sh.getActiveCell().getRowIndex();
+  var value = sh.getActiveCell().getValue();
+  sh.getRange(row, 2).setValue(value);
+  
+  /*
+  var i = 0;
+  while(name[i] < name.length) {
+    file = contents.next();
+    file = getFilesByName(name.next());
+    link = file.getUrl();
+    description = file.getDescription();
+    link = getURL(id);
+    owner = getOwner(id);
+    Logger.log([file]);
+    if (description) {
+      parsed = description.split("|");
+      sheet.appendRow( [name, link, owner, parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5]] );
+    } else {
+
+  }  
+  
+      */
+  
+  }
+     
