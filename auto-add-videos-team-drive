@@ -1,0 +1,36 @@
+function autoAddVideosTeamDrive() {
+    
+  var file;
+  var name;
+  var link;
+  var description;
+  var parsed;
+  var folder = DriveApp.getFolderById('1UZ_2G7rlxHGJRqk0zcM8HfrQzQU99dIG'); // function needs to be able to access the new Team Drive folder
+  var contents = folder.getFiles();
+  var ss = SpreadsheetApp.openById('1l2N3gC1kOPmodcbw_dOwMWfxFpzIV6urV4shbNYQWY0');
+  var sheet = ss.setActiveSheet(ss.getSheetByName('All Videos'));
+  //var range = sheet.getRange("A5:H5");
+  //sheet.setActiveRange(range);
+  
+  sheet.clearContents();
+  sheet.appendRow([" "]);
+  sheet.appendRow([" ", "Schooling Video Roster"]);
+  sheet.appendRow([" ", "All Videos"]);
+  sheet.appendRow([" "]);
+  sheet.appendRow(['Name', 'Link', 'Content Area', 'Topic', 'School Division', 'Grade(s)', 'Teacher/Presenter', 'Year'] );
+  
+  while(contents.hasNext()) {
+    file = contents.next();
+    name = file.getName();
+    link = file.getUrl();
+    description = file.getDescription();
+    if (description) {
+      parsed = description.split("|");
+      sheet.appendRow( [name, link, parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5]] );
+    } else {
+    Logger.log( [name, link, parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5]] );
+  }  
+  }
+    sheet.sort(1);
+     
+}
